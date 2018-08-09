@@ -1,6 +1,5 @@
-/**
- * mp editor 插件定义
- */
+import EditorForm from './editform/index'
+import Preview from './preview/index'
 
 let definition = {
     // 所属bundle
@@ -12,9 +11,9 @@ let definition = {
     },
     name: '',
     description: '',
-    preview: null, // 预览组件
+    preview: Preview, // 预览组件
     previewType: 'react',
-    editForm: null, // 数据编辑表单
+    editForm: EditorForm, // 数据编辑表单
     editFormType: 'react',
     editable: false, // 组件数据是否可编辑
     canDelete: false, // 组件数据是否可编辑
