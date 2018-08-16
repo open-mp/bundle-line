@@ -7,7 +7,9 @@ const path = require('path');
  */
 function getEntries(config) {
   // 返回内容 文件名 -> 文件路径
-  let entries = {};
+  let entries = {
+    "mp-editor-plugin": "./src/mp-editor-plugin/index.js"
+  };
 
   return entries;
 }
