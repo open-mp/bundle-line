@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {Radio, ColorPicker} from 'zent';
 
-import {DesignEditor, ControlGroup} from './DesignEditor';
+import ControlGroup from './ControlGroup';
 
 const RadioGroup = Radio.Group;
 const DEFAULT_COLOR = '#e5e5e5';
 const prefix = 'mp';
 
-export default class LineEditor extends DesignEditor {
+export default class LineEditor extends PureComponent {
     render() {
         const {instance: value, showError, validation} = this.props;
 
@@ -15,7 +15,7 @@ export default class LineEditor extends DesignEditor {
             <div className={`${prefix}-design-component-line-editor`}>
                 <ControlGroup
                     label="颜色:"
-                    showError={showError }
+                    showError={showError}
                     error={validation.content}
                 >
                     <ColorPicker
@@ -32,7 +32,7 @@ export default class LineEditor extends DesignEditor {
                 </ControlGroup>
                 <ControlGroup
                     label="边距:"
-                    showError={showError }
+                    showError={showError}
                     error={validation.content}
                 >
                     <RadioGroup value={value.hasPadding} onChange={this.onInputChange}>
@@ -46,7 +46,7 @@ export default class LineEditor extends DesignEditor {
                 </ControlGroup>
                 <ControlGroup
                     label="样式:"
-                    showError={showError }
+                    showError={showError}
                     error={validation.content}
                 >
                     <RadioGroup value={value.lineType} onChange={this.onInputChange}>
@@ -65,20 +65,24 @@ export default class LineEditor extends DesignEditor {
         );
     }
 
-    onColorChange = this.onCustomInputChange('color');
+
+    onColorChange = (value) => {
+        const {design, instance} = this.props;
+        design.modifyInstance(instance, {color: value});
+    }
 
     onColorReset = () => {
         this.onColorChange(DEFAULT_COLOR);
     };
 
-    static designType = 'line';
-    static designDescription = '辅助线';
+    onInputChange = evt => {
+        const {target} = evt;
+        let {name, type, value} = target;
 
-    static getInitialValue() {
-        return {
-            color: DEFAULT_COLOR,
-            hasPadding: false,
-            lineType: 'solid',
-        };
-    }
+        if (type === 'checkbox') {
+            value = target.checked;
+        }
+        const {design, instance} = this.props;
+        design.modifyInstance(instance, {[name]: value});
+    };
 }
