@@ -1,7 +1,7 @@
 import EditorForm from './editform/index'
 import Preview from './preview/index'
 
-let definition = {
+export default {
     // 所属bundle
     bundleId: {
         groupId: '',
@@ -21,7 +21,11 @@ let definition = {
     highlightWhenSelect: true, // 选择后是否高亮
     // 获取初始值
     getInitialValue() {
-
+        return {
+            color: '#e5e5e5',
+            hasPadding: false,
+            lineType: 'solid',
+        };
     },
     // 验证示例数据
     validate(instance) {

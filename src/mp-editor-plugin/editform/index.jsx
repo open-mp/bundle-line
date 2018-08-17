@@ -9,13 +9,13 @@ const prefix = 'mp';
 
 export default class LineEditor extends DesignEditor {
     render() {
-        const {value, showError, validation} = this.props;
+        const {instance: value, showError, validation} = this.props;
 
         return (
             <div className={`${prefix}-design-component-line-editor`}>
                 <ControlGroup
                     label="颜色:"
-                    showError={showError || this.getMetaProperty('content', 'touched')}
+                    showError={showError }
                     error={validation.content}
                 >
                     <ColorPicker
@@ -32,7 +32,7 @@ export default class LineEditor extends DesignEditor {
                 </ControlGroup>
                 <ControlGroup
                     label="边距:"
-                    showError={showError || this.getMetaProperty('content', 'touched')}
+                    showError={showError }
                     error={validation.content}
                 >
                     <RadioGroup value={value.hasPadding} onChange={this.onInputChange}>
@@ -46,7 +46,7 @@ export default class LineEditor extends DesignEditor {
                 </ControlGroup>
                 <ControlGroup
                     label="样式:"
-                    showError={showError || this.getMetaProperty('content', 'touched')}
+                    showError={showError }
                     error={validation.content}
                 >
                     <RadioGroup value={value.lineType} onChange={this.onInputChange}>

@@ -8,7 +8,9 @@
     "build": "node scripts/build.js",
     "watch": "node scripts/watch.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "classnames": "^2.2.6"
+  },
   "devDependencies": {
     "autoprefixer": "^9.0.1",
     "babel-core": "^6.26.3",

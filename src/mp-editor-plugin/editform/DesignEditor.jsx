@@ -1,6 +1,6 @@
 import React, {PureComponent, Component} from 'react';
+import cx from 'classnames';
 
-const prefix = 'mp';
 const NOT_EVENT_MSG =
     'onInputChange expects an `Event` with { target: { name, value } } as argument';
 
