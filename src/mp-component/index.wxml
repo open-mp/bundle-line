@@ -1,3 +1,4 @@
-<!--components/goods/goods.wxml-->
-<text>pullDownCount: {{pullDownCount}}</text>
-<button bindtap="fireEvent">触发事件</button>
+<!--components/sku/sku.wxml-->
+ <view class="line-wrapper">
+    <view class="line"></view>
+ </view>
